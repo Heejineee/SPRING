@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!--  메모리 할당 :  스프링에서 메모리 할당(클래스 등록해야함)
+			<bean id="aa" class="com.sist.vusic.Abc)
+			<Class 
+			Object obj=cls.newInstance();
+			
+			Map map=new HashhMp;	-->
+	<bean id="sa" class="com.sist.di.Sawon" scope="prototype">	<!-- scope 생략하면 singleton이 기본 싱글톤은 메모리가 하나만 생성됨 -->
+		<property name="name">
+			<value>심청이</value>
+		</property>
+		<property name="sex" value="여자"/>
+		<property name="age">
+			<value>20</value>
+		</property>
+	</bean>
+	
+	<bean id="sa1" class="com.sist.di.Sawon"
+		p:name="박문수"
+		p:sex="남자"
+		p:age="30"
+	/>
+</beans>
