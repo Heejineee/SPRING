@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="main" template="/WEB-INF/main/main.jsp">	<!-- 여기 name이 리턴값 -->
+		<put-attribute name="header" value="/WEB-INF/main/header.jsp"></put-attribute>
+		<put-attribute name="menu" value="/WEB-INF/main/menu.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/main/content.jsp"></put-attribute>
+		<put-attribute name="footer" value="/WEB-INF/main/footer.jsp"></put-attribute>
+	</definition>
+	<!--
+		<definition name="board/list" extends="main">	 위에 main 상속받음 / 밑에처럼 쟤만 설정하면 위에 애들 다 갖고 오는거에서 저부분만 변경하는거(상속 받았으니깐!)
+			<put-attribute name="content" value="/WEB-INF/board/list.jsp"></put-attribute>
+		</definition>
+		<definition name="notice/list" extends="main">
+				<put-attribute name="content" value="/WEB-INF/notice/list.jsp"></put-attribute>
+		</definition>
+	-->
+	<definition name="*/*" extends="main">
+		<put-attribute name="content" value="/WEB-INF/{1}/{2}.jsp"></put-attribute>
+	</definition>
+	<definition name="*/*/*" extends="main">
+		<put-attribute name="content" value="/WEB-INF/{1}/{2}/{3}.jsp"></put-attribute>
+	</definition>
+</tiles-definitions>
