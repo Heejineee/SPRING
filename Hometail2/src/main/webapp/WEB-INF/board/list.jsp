@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<div class="container">
      <div class="row">
 	       <table class="table">
 	         <tr>
@@ -30,7 +30,7 @@
            <tr>
                <td class="text-center" width=10%>${vo.board_no }</td>
 	           <td class="text-left" width=45%>
-	             <a href="detail.do?no=${vo.board_no }">${vo.title }</a>
+	             <a href="detail.do?board_no=${vo.board_no }">${vo.title }</a>
 	           </td>
 	           <td class="text-center" width=15%>${vo.id }</td>
 	           <td class="text-center" width=20%>
@@ -49,7 +49,7 @@
        </table>
      </div>
      
-     
+     <!-- 
      
 <section class="hero-wrap hero-wrap-2" style="background-image: url('../images/bg_1.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
@@ -258,11 +258,13 @@
               <h3>Paragraph</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
             </div>
-          </div><!-- END COL -->
+          </div> 
+           
         </div>
 			</div>
 		</section>
+-->
 
-
+			</div>
 </body>
 </html>

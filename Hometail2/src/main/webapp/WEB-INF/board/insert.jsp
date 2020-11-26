@@ -13,13 +13,19 @@
      <form method=post action="insert_ok.do">
      <table class="table">
        <tr>
-        <th class="text-right danger" width=15%>제목</th>
+        <th class="text-right" width=15%>이름</th>
         <td width=85%>
-          <input type=text name=subject size=50>
+          <input type=text name=id size=50>
         </td>
        </tr>
        <tr>
-        <th class="text-right danger" width=15%>내용</th>
+        <th class="text-right" width=15%>제목</th>
+        <td width=85%>
+          <input type=text name=title size=50>
+        </td>
+       </tr>
+       <tr>
+        <th class="text-right" width=15%>내용</th>
         <td width=85%>
           <textarea rows="8" cols="55" name=content></textarea>
         </td>

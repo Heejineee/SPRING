@@ -15,6 +15,14 @@
     <context:component-scan base-package="com.sist.*"/>
     <!-- DB -->
     <!-- DataSource 생성 : database의 정보 (driver,username,password,url...)-->
+    	<bean id="dbcon"
+        class="com.sist.dao.DBConnection"
+        c:driver="oracle.jdbc.driver.OracleDriver"
+        c:url="jdbc:oracle:thin:@211.238.142.183:1521:XE"
+        c:username="hr"
+        c:password="happy"
+     />
+     
     <bean id="ds"
     	class="org.apache.commons.dbcp.BasicDataSource"
     	p:driverClassName="oracle.jdbc.driver.OracleDriver"
@@ -22,6 +30,7 @@
     	p:username="hr"
     	p:password="happy"
    	/>
+   
     <!-- DataSource => Transaction 설정 -->
     
     <!-- SqlSessionFactory : 마이바티스에서 DB연결 (getConnection,disConnection) -->
@@ -29,6 +38,7 @@
     	class="org.mybatis.spring.SqlSessionFactoryBean"
     	p:dataSource-ref="ds"
     />
+
 
     <!-- ViewResolver -->
     <bean id="tilesViewResolver"
