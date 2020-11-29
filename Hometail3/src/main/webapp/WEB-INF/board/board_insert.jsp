@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-  <div class="container">
+<div class="container">
     <div class="row">
      <form method=post action="insert_ok.do">
      <table class="table">
@@ -31,8 +31,8 @@
        </tr>
        <tr>
         <td colspan="2" class="text-center">
-          <input type=submit value="글쓰기">
-          <input type=button value="취소" onclick="javascript:history.back()">
+          <input type=submit value="글쓰기" class="btn btn-sm btn-primary">
+          <input type=button value="취소" onclick="javascript:history.back()" class="btn btn-sm btn-default">
         </td>
        </tr>
      </table>
@@ -41,5 +41,3 @@
   </div>
 </body>
 </html>
-
-
