@@ -22,7 +22,7 @@
 		$.ajax({
 			type:'POST',
 			url:'../board/board_list.do',
-			data:{no:no},
+			data:{"no":no},
 			success:function(res)
 			{
 				console.log("test");
@@ -33,6 +33,7 @@
 		
 		$('.cate').click(function(){
 			no=$(this).attr("value");
+			console.log(no+'클릭');
 			$.ajax({
 				type:'POST',
 				url:'../board/board_list.do',

@@ -48,6 +48,13 @@ public class BoardController {
 	@RequestMapping("board/board_list.do")
 	public String board_board_list(String page,Model model,String no)
 	{
+		System.out.println("no값은"+no);
+		if(no==null)
+		{
+			System.out.println("no는 null");
+			no="1";
+		}
+		
 		if(page==null)
 			   page="1";
 		   int curpage=Integer.parseInt(page);
@@ -83,7 +90,7 @@ public class BoardController {
 		   model.addAttribute("curpage", curpage);
 		   model.addAttribute("acurpage", acurpage);
 		   model.addAttribute("qcurpage", qcurpage);
-           model.addAttribute("totalpage", fTotalpage);
+           model.addAttribute("fTotalpage", fTotalpage);
            model.addAttribute("aTotalpage", aTotalpage);
            model.addAttribute("qTotalpage", qTotalpage);
            model.addAttribute("startPage", startPage);
@@ -96,22 +103,34 @@ public class BoardController {
 		   return "board_list";
 	}
 	@RequestMapping("board/board_insert.do")
-	public String board_insert()
+	public String board_insert(String no, Model model)
 	{
+		model.addAttribute("no", no);
 		return "board_insert";
 	}   
 	@RequestMapping("board/insert_ok.do")
-	   public String board_insert_ok(BoardVO vo)
+	   public String board_insert_ok(BoardVO vo, String no)
 	   {
-		   dao.freeBoardInsert(vo);
-		   dao.qnaBoardInsert(vo);
+			System.out.println("받은 no:"+no);
+			int cate=Integer.parseInt(no); 
+			System.out.println("cate"+cate);
+			if(cate==1)
+			{
+				dao.freeBoardInsert(vo);
+			}
+			else if(cate==4)
+			{
+				dao.qnaBoardInsert(vo);
+			}
 		   return "redirect:../board/list.do";
 	   } 
 	@RequestMapping("board/detail.do")
-	   public String board_detailData(int board_no, Model model)
+	   public String board_detail(int board_no, Model model)
 	   {
 		  // int curpage=Integer.parseInt(page);
-		   BoardVO vo=dao.aReviewBoardDetailData(board_no);
+		   BoardVO vo=dao.BoardDetailData(board_no);
+		   //int no=Integer.parseInt(board_no);
+		   //BoardVO vo=dao.BoardDetailData(no);
 		   //List<ReplyVO> list=dao.replyListData(3, no, curpage);
 		   model.addAttribute("vo", vo);
 		   //model.addAttribute("list", list);

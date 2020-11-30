@@ -251,13 +251,13 @@ public class BoardDAO {
 		}catch(Exception ex){}
 		dbConn.disConnection();
 	}
-	public BoardVO aReviewBoardDetailData(int board_no)
+	public BoardVO BoardDetailData(int board_no)
 	{
 		BoardVO vo=new BoardVO();
 		try
 		{
 			dbConn.getConnection();
-			String sql="{CALL aReviewBoardDetailData(?,?)}";
+			String sql="{CALL BoardDetailData(?,?)}";
 			cs=dbConn.getConn().prepareCall(sql);
 			cs.setInt(1, board_no);
 			cs.registerOutParameter(2, OracleTypes.CURSOR);
@@ -270,8 +270,8 @@ public class BoardDAO {
 			vo.setTitle(rs.getString(4));
 			vo.setContent(rs.getString(5));
 			vo.setRegdate(rs.getDate(6));
-			vo.setPoster(rs.getString(7));
-			vo.setHit(rs.getInt(8));
+			vo.setHit(rs.getInt(7));
+			vo.setPoster(rs.getString(8));
 			rs.close();
 		}catch(Exception ex){}
 		dbConn.disConnection();

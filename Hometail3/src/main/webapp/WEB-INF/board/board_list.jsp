@@ -21,16 +21,29 @@
 			$.ajax({
 				type:'POST',
 				url:'../board/board_insert.do',
+				data:{no:no},
 				success:function(res)
 				{
 					$('#print').html(res);
 				}
 			});
 		});
-	
+
+		$('.detail').click(function(){
+			$.ajax({
+				type:'POST',
+				url:'../board/detail.do',
+				data:{'bn':$('.bn').val()},
+				success:function(res)
+				{
+					$('#print').html(res);
+				}
+			});
+		});
 
 		//페이지 넘기는 용도
-		$('li').click(function(){
+	
+		$('.page').click(function(){
 			let page=$(this).attr("page");
 			console.log(page);
 			$.ajax({
@@ -43,7 +56,7 @@
 					}
 				})
 		});
-		
+
 	});
 </script> 
 </head>
@@ -68,7 +81,8 @@
            <tr>
                <td class="text-center" width=10%>${fvo.board_no }</td>
 	           <td class="text-left" width=45%>
-	             <a href="detail.do?board_no=${fvo.board_no }">${fvo.title }</a>
+	             <span class="btn detail">${fvo.title }</span>
+               <input type=hidden value="${fvo.board_no }" class="bn">
 	           </td>
 	           <td class="text-center" width=15%>${fvo.id }</td>
 	           <td class="text-center" width=20%>
@@ -82,24 +96,24 @@
              <div class="block-27">
                <ul>
                   <c:if test="${curpage>BLOCK }">
-                    <li page="${startPage-1 }"><a style="cursor: pointer;">&lt;</a></li>
+                    <li page="${startPage-1 }" class="page"><a style="cursor: pointer;">&lt;</a></li>
                  </c:if>
                  
                  <c:forEach var="i" begin="${startPage }" end="${endPage }">
                      <c:if test="${i==curpage }">
-                           <li class="active" page="${i }">
+                           <li class="page active" page="${i }">
                                <a style="cursor: pointer;">${i }</a>
                            </li> 
                      </c:if>
                      <c:if test="${i!=curpage }">
-                           <li page="${i }">
+                           <li page="${i }" class="page">
                                <a style="cursor: pointer;">${i }</a>
                            </li>
                     </c:if>
                   </c:forEach>
                  
-                 <c:if test="${endPage<totalpage }">
-                    <li page="${endPage+1 }"><a style="cursor: pointer;">&gt;</a></li>
+                 <c:if test="${endPage<fTotalpage }">
+                    <li page="${endPage+1 }" class="page"><a style="cursor: pointer;">&gt;</a></li>
                  </c:if>
                  
                </ul>
@@ -110,8 +124,8 @@
 	        <c:forEach var="rvo" items="${rList }">
 	          		<div class="col-md-4 ftco-animated">
 			            <div class="blog-entry">
-			              <a href="detail.do?board_no=${rvo.board_no }" class="block-20" style="background-image: url('${rvo.poster}');">
-			              </a>
+			              <span class="btn block-20 detail" style="background-image: url('${rvo.poster}'); border-radius:0;"></span>
+         			     <input type=hidden value="${rvo.board_no }" class="bn">
 			              <div class="text d-flex py-4">
 			                <div class="meta mb-3">
 			                  <div>${rvo.regdate }</div>
@@ -128,24 +142,24 @@
              <div class="block-27">
                <ul>
                   <c:if test="${acurpage>BLOCK }">
-                    <li page="${astartPage-1 }"><a style="cursor: pointer;">&lt;</a></li>
+                    <li page="${astartPage-1 }" class="page"><a style="cursor: pointer;">&lt;</a></li>
                  </c:if>
                  
                  <c:forEach var="i" begin="${astartPage }" end="${aendPage }">
                      <c:if test="${i==acurpage }">
-                           <li class="active" page="${i }">
+                           <li class="page active" page="${i }">
                                <a style="cursor: pointer;">${i }</a>
                            </li> 
                      </c:if>
                      <c:if test="${i!=acurpage }">
-                           <li page="${i }">
+                           <li page="${i }" class="page">
                                <a style="cursor: pointer;">${i }</a>
                            </li>
                     </c:if>
                   </c:forEach>
                  
-                 <c:if test="${aendPage<atotalpage }">
-                    <li page="${aendPage+1 }"><a style="cursor: pointer;">&gt;</a></li>
+                 <c:if test="${aendPage<aTotalpage }">
+                    <li page="${aendPage+1 }" class="page"><a style="cursor: pointer;">&gt;</a></li>
                  </c:if>
                  
                </ul>
@@ -172,7 +186,8 @@
            <tr>
                <td class="text-center" width=10%>${qvo.board_no }</td>
 	           <td class="text-left" width=45%>
-	             <a href="detail.do?board_no=${qvo.board_no }">${qvo.title }</a>
+	             <span class="btn detail">${qvo.title }</span>
+               <input type=hidden value="${qvo.board_no }" class="bn">
 	           </td>
 	           <td class="text-center" width=15%>${qvo.id }</td>
 	           <td class="text-center" width=20%>
@@ -186,24 +201,24 @@
              <div class="block-27">
                <ul>
                   <c:if test="${qcurpage>BLOCK }">
-                    <li page="${qstartPage-1 }"><a style="cursor: pointer;">&lt;</a></li>
+                    <li page="${qstartPage-1 }" class="page"><a style="cursor: pointer;">&lt;</a></li>
                  </c:if>
                  
                  <c:forEach var="i" begin="${qstartPage }" end="${qendPage }">
                      <c:if test="${i==qcurpage }">
-                           <li class="active" page="${i }">
+                           <li class="page active" page="${i }">
                                <a style="cursor: pointer;">${i }</a>
                            </li> 
                      </c:if>
                      <c:if test="${i!=qcurpage }">
-                           <li page="${i }">
+                           <li page="${i }" class="page">
                                <a style="cursor: pointer;">${i }</a>
                            </li>
                     </c:if>
                   </c:forEach>
                  
-                 <c:if test="${qendPage<qtotalpage }">
-                    <li page="${qendPage+1 }"><a style="cursor: pointer;">&gt;</a></li>
+                 <c:if test="${qendPage<qTotalpage }">
+                    <li page="${qendPage+1 }" class="page"><a style="cursor: pointer;">&gt;</a></li>
                  </c:if>
                  
                </ul>
