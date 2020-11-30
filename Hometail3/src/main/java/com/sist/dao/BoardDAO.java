@@ -251,7 +251,7 @@ public class BoardDAO {
 		}catch(Exception ex){}
 		dbConn.disConnection();
 	}
-	public BoardVO BoardDetailData(int board_no)
+	public BoardVO BoardDetailData(int bno)
 	{
 		BoardVO vo=new BoardVO();
 		try
@@ -259,7 +259,7 @@ public class BoardDAO {
 			dbConn.getConnection();
 			String sql="{CALL BoardDetailData(?,?)}";
 			cs=dbConn.getConn().prepareCall(sql);
-			cs.setInt(1, board_no);
+			cs.setInt(1, bno);
 			cs.registerOutParameter(2, OracleTypes.CURSOR);
 			cs.executeQuery();
 			ResultSet rs=(ResultSet)cs.getObject(2);

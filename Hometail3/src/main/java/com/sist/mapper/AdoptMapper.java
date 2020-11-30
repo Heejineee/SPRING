@@ -15,7 +15,7 @@ public interface AdoptMapper {
 			+ "FROM (SELECT no,punumber,poster,rownum as num "
 			+ "FROM (SELECT no,punumber,poster "
 			+ "FROM adoption ORDER BY no DESC )) "
-			+ "WHERE num BETWEEN #{start} AND #{end}")
+			+ "WHERE num BETWEEN #{start} AND #{end}") 
 	public List<AdoptVO> adoptListData(Map map);
 	@Select("SELECT CEIL(COUNT(*)/12.0) FROM adoption")
 	public int adoptTotalPage();

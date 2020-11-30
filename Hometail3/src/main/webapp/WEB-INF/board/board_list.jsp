@@ -11,6 +11,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 	$(function(){
+		
 		$('#new').hover(function(){
 			$(this).css("cursor", "pointer")
 		}, function(){
@@ -30,11 +31,17 @@
 		});
 
 		$('.detail').click(function(){
+			
+			
+			var cate= $(this).attr("data-value");
+		    var board_no = $(this).attr("data-cate");
+		    console.log('cate'+cate);
+		    console.log('board_no'+board_no);
 			$.ajax({
 				type:'POST',
 				url:'../board/detail.do',
-				data:{'bn':$('.bn').val()},
-				success:function(res)
+				data:{'board_no':board_no},
+				success:function(res) 
 				{
 					$('#print').html(res);
 				}
@@ -81,7 +88,7 @@
            <tr>
                <td class="text-center" width=10%>${fvo.board_no }</td>
 	           <td class="text-left" width=45%>
-	             <span class="btn detail">${fvo.title }</span>
+	             <span class="btn detail" data-value="${no }" data-cate="${fvo.board_no }">${fvo.title }</span> 
                <input type=hidden value="${fvo.board_no }" class="bn">
 	           </td>
 	           <td class="text-center" width=15%>${fvo.id }</td>
@@ -124,7 +131,7 @@
 	        <c:forEach var="rvo" items="${rList }">
 	          		<div class="col-md-4 ftco-animated">
 			            <div class="blog-entry">
-			              <span class="btn block-20 detail" style="background-image: url('${rvo.poster}'); border-radius:0;"></span>
+			              <span class="btn block-20 detail" data-value="${no }" data-cate="${rvo.board_no }" style="background-image: url('${rvo.poster}'); border-radius:0;"></span>
          			     <input type=hidden value="${rvo.board_no }" class="bn">
 			              <div class="text d-flex py-4">
 			                <div class="meta mb-3">
@@ -186,7 +193,7 @@
            <tr>
                <td class="text-center" width=10%>${qvo.board_no }</td>
 	           <td class="text-left" width=45%>
-	             <span class="btn detail">${qvo.title }</span>
+	             <span class="btn detail" data-value="${no }" data-cate="${qvo.board_no }">${qvo.title }</span>
                <input type=hidden value="${qvo.board_no }" class="bn">
 	           </td>
 	           <td class="text-center" width=15%>${qvo.id }</td>

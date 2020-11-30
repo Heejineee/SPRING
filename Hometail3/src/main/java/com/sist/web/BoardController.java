@@ -125,16 +125,17 @@ public class BoardController {
 		   return "redirect:../board/list.do";
 	   } 
 	@RequestMapping("board/detail.do")
-	   public String board_detail(int board_no, Model model)
+	   public String board_detail(String board_no, Model model)
 	   {
-		  // int curpage=Integer.parseInt(page);
-		   BoardVO vo=dao.BoardDetailData(board_no);
-		   //int no=Integer.parseInt(board_no);
+		   int bno=Integer.parseInt(board_no);
+		   System.out.println("디테일 넘버 : "+bno);
+		   //System.out.println("cate번호 "+cate);
+		   BoardVO vo=dao.BoardDetailData(bno);
 		   //BoardVO vo=dao.BoardDetailData(no);
 		   //List<ReplyVO> list=dao.replyListData(3, no, curpage);
 		   model.addAttribute("vo", vo);
 		   //model.addAttribute("list", list);
-		   return "board/detail";
+		   return "board_detail"; 
 		   
 	   }
 }

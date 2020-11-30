@@ -16,6 +16,8 @@
   </definition> 
  <definition name="board_insert" template="/WEB-INF/board/board_insert.jsp"> 
   </definition> 
+ <definition name="board_detail" template="/WEB-INF/board/detail.jsp"> 
+  </definition> 
   <!-- <definition name="login" template="/WEB-INF/member/login.jsp">
   </definition>
   <definition name="join" template="/WEB-INF/member/join.jsp">
