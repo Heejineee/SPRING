@@ -136,6 +136,23 @@ public class BoardController {
 		   model.addAttribute("vo", vo);
 		   //model.addAttribute("list", list);
 		   return "board_detail"; 
-		   
 	   }
+	
+	// 삭제 연습 여기부터 해!
+	@RequestMapping("board/delete_ok.do")
+	   public String board_insert_ok(BoardVO vo, String no)
+	   {
+			System.out.println("받은 no:"+no);
+			int cate=Integer.parseInt(no); 
+			System.out.println("cate"+cate);
+			if(cate==1)
+			{
+				dao.freeBoardInsert(vo);
+			}
+			else if(cate==4)
+			{
+				dao.qnaBoardInsert(vo);
+			}
+		   return "redirect:../board/list.do";
+	   } 
 }

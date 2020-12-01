@@ -251,6 +251,22 @@ public class BoardDAO {
 		}catch(Exception ex){}
 		dbConn.disConnection();
 	}
+	// 삭제 연습
+	public void boardDelete(int board_no, String id)
+	{
+		try
+		{
+			dbConn.getConnection();
+			String sql="{CALL boardDelete(?, ?)}";
+			cs=dbConn.getConn().prepareCall(sql);
+			cs.setInt(1, board_no);
+			cs.setString(2, id);
+			cs.executeQuery();
+						
+		}catch(Exception ex){}
+		dbConn.disConnection();
+	}
+	
 	public BoardVO BoardDetailData(int bno)
 	{
 		BoardVO vo=new BoardVO();
