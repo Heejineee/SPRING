@@ -140,19 +140,10 @@ public class BoardController {
 	
 	// 삭제 연습 여기부터 해!
 	@RequestMapping("board/delete_ok.do")
-	   public String board_insert_ok(BoardVO vo, String no)
+	   public String board_delete_ok(String no, String id, BoardVO vo)
 	   {
-			System.out.println("받은 no:"+no);
-			int cate=Integer.parseInt(no); 
-			System.out.println("cate"+cate);
-			if(cate==1)
-			{
-				dao.freeBoardInsert(vo);
-			}
-			else if(cate==4)
-			{
-				dao.qnaBoardInsert(vo);
-			}
+			int board_no=Integer.parseInt(no); 
+			dao.boardDelete(board_no, id);
 		   return "redirect:../board/list.do";
 	   } 
 }

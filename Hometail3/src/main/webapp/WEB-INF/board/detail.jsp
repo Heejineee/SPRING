@@ -38,9 +38,11 @@
 	        </tr>
 	        <tr>
 	          <td colspan="4" class="text-right">
-	            <a href="#" class="btn btn-sm btn-success">수정</a>
-	            <a href="#" class="btn btn-sm btn-info">삭제</a>
-	            <a href="javascript." class="btn btn-sm btn-warning">목록</a>
+	          <c:if test="${sessionScope.id==vo.id }">
+		            <a href="#" class="btn btn-sm btn-success">수정</a>
+		            <a href="../board/delete_ok.do" class="btn btn-sm btn-info">삭제</a>
+		      </c:if>      
+	            <a href="#" class="btn btn-sm btn-warning">목록</a>
 	          </td>
 	        </tr>
 	      </table>
